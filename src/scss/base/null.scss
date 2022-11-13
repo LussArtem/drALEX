@@ -22,6 +22,7 @@ body {
 	min-width: $minWidth + px;
 }
 body {
+	background-color: $mainColorBG;
 	color: $mainColor;
 	line-height: 1;
 	font-family: $fontFamily;
@@ -54,8 +55,9 @@ a:visited {
 a:hover {
 	text-decoration: none;
 }
-ul li {
+ol li {
 	list-style: none;
+	padding-left: 0;
 }
 img {
 	vertical-align: top;

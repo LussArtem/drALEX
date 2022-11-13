@@ -1,0 +1,29 @@
+.parallax {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    padding-top: 10rem;
+    &__fon {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 100%;
+        position: absolute;
+        object-fit: cover;
+        width: 100%;
+        z-index: -10;
+    }
+    &__photo {
+        top: 70px;
+        // left: 50%;
+        // transform: translateX(-50%);
+        height: 100%;
+        position: absolute;
+        object-fit: contain;
+        width: 100%;
+    }
+}
+

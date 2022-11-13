@@ -1,54 +1,129 @@
 //====================================================================================================
 
+.header {
+  width: 100%;
+  position: fixed;
+  mix-blend-mode: difference;
+  z-index: 5;
+  svg {
+    fill: $mainColor;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 0;
+  }
+
+  &__logo {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  &__burger {
+	margin-left: rem(0.3);
+  }
+
+  &__menu {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    &:hover {
+      .icon-menu {
+        span,
+        &::after,
+        &::before {
+          animation-play-state: running;
+        }
+        span {
+          animation-play-state: running;
+        }
+        &::before {
+          animation-play-state: running;
+        }
+      }
+    }
+  }
+}
 //====================================================================================================
 
 //Burger
-/*
+
 .icon-menu {
-	display: none;
-	@media (max-width: $mobile) {
-		display: block;
-		position: relative;
-		width: rem(30);
-		height: rem(18);
-		cursor: pointer;
-		z-index: 5;
-		span,
-		&::before,
-		&::after {
-			content: "";
-			transition: all 0.3s ease 0s;
-			right: 0;
-			position: absolute;
-			width: 100%;
-			height: rem(2);
-			background-color: #000;
-		}
-		&::before {
-			top: 0;
-		}
-		&::after {
-			bottom: 0;
-		}
-		span {
-			top: calc(50% - rem(1));
-		}
-		.menu-open & {
-			span {
-				width: 0;
-			}
-			&::before,
-			&::after {
-			}
-			&::before {
-				top: calc(50% - rem(1));
-				transform: rotate(-45deg);
-			}
-			&::after {
-				bottom: calc(50% - rem(1));
-				transform: rotate(45deg);
-			}
-		}
-	}
+  // display: none;
+  display: block;
+  position: relative;
+  width: rem(26);
+  height: rem(26);
+  z-index: 5;
+  transform: rotate(180deg);
+  span,
+  &::before,
+  &::after {
+    content: "";
+    transition: all 0.3s ease 0s;
+    right: 0;
+    position: absolute;
+    height: rem(5.4);
+    background-color: rgba(255, 255, 255, 0.877);
+  }
+
+  &::before {
+    width: 100%;
+    top: 0;
+	animation: burger-hover 1s infinite ease-in-out alternate 400ms paused;
+  }
+
+  &::after {
+    width: 50%;
+    bottom: 0;
+	animation: burger-hover 1s infinite ease-in-out alternate 1ms paused;
+  }
+
+  span {
+    width: 75%;
+    top: calc(50% - rem(2.75));
+	animation: burger-hover 1s infinite ease-in-out alternate 200ms paused;
+  }
+
+  @keyframes burger-hover {
+    0% {
+      width: 100%;
+    }
+    50% {
+      width: 50%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+  .menu-open & {
+	transform: rotate(90deg);
+    span {
+      width: 100%;
+	  top: calc(50% - rem(2.75));
+	//   animation: burger-hover none;
+    }
+    span,
+    &::before,
+    &::after {
+		background-color: rgb(192, 51, 51);
+		animation-play-state: running;
+    }
+    &::before {
+    //   top: calc(50% - rem(1));
+    //   transform: rotate(-45deg);
+    //   animation: none !important;
+	top: 0;
+    }
+    &::after {
+    //   bottom: calc(50% - rem(1));
+    //   transform: rotate(45deg);
+	bottom: 0;
+    }
+  }
 }
-*/
