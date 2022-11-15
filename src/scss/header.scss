@@ -21,16 +21,33 @@
   &__logo {
     width: 6rem;
     height: 6rem;
+    &:hover {
+      // animation need
+      // animation: burger 1s ease-in-out alternate;
+      // animation-fill-mode: both;
+    }
   }
 
   &__burger {
-	margin-left: rem(0.3);
+    margin-left: rem(0.3);
   }
 
   &__menu {
     cursor: pointer;
     display: flex;
+    position: relative;
     align-items: center;
+
+    &::after {
+      content: "";
+      background-color: rgb(0, 0, 0);
+      width: 0;
+      inset: 0;
+      position: absolute;
+      transform-origin: right;
+      // animation: burger 3s alternate ease-in-out forwards;
+    }
+
     &:hover {
       .icon-menu {
         span,
@@ -48,6 +65,17 @@
     }
   }
 }
+
+@keyframes burger {
+  0% {
+    transform: rotate(1deg);
+  }
+  100% {
+    transform: rotate(90deg);
+    top: calc(50% - rem(2.75));
+
+  }
+}
 //====================================================================================================
 
 //Burger
@@ -59,13 +87,13 @@
   width: rem(26);
   height: rem(26);
   z-index: 5;
-  transform: rotate(180deg);
+  // transform: rotate(180deg);
   span,
   &::before,
   &::after {
     content: "";
     transition: all 0.3s ease 0s;
-    right: 0;
+    left: 0;
     position: absolute;
     height: rem(5.4);
     background-color: rgba(255, 255, 255, 0.877);
@@ -74,19 +102,19 @@
   &::before {
     width: 100%;
     top: 0;
-	animation: burger-hover 1s infinite ease-in-out alternate 400ms paused;
+    animation: burger-hover 1s infinite ease-in-out alternate 400ms paused;
   }
 
   &::after {
     width: 50%;
     bottom: 0;
-	animation: burger-hover 1s infinite ease-in-out alternate 1ms paused;
+    animation: burger-hover 1s infinite ease-in-out alternate 1ms paused;
   }
 
   span {
     width: 75%;
     top: calc(50% - rem(2.75));
-	animation: burger-hover 1s infinite ease-in-out alternate 200ms paused;
+    animation: burger-hover 1s infinite ease-in-out alternate 200ms paused;
   }
 
   @keyframes burger-hover {
@@ -102,28 +130,43 @@
   }
 
   .menu-open & {
-	transform: rotate(90deg);
+    // transform: rotate(90deg);
+    animation: burger 0.3s ease-in-out alternate;
+    animation-fill-mode: both;
+
     span {
       width: 100%;
-	  top: calc(50% - rem(2.75));
-	//   animation: burger-hover none;
+      top: calc(50% - rem(2.75));
+      //   animation: burger-hover none;
     }
     span,
     &::before,
     &::after {
-		background-color: rgb(192, 51, 51);
-		animation-play-state: running;
+      background-color: rgb(192, 51, 51);
+      animation-play-state: running;
     }
     &::before {
-    //   top: calc(50% - rem(1));
-    //   transform: rotate(-45deg);
-    //   animation: none !important;
-	top: 0;
+      top: 0;
     }
     &::after {
-    //   bottom: calc(50% - rem(1));
-    //   transform: rotate(45deg);
-	bottom: 0;
+      bottom: 0;
     }
+  }
+  @keyframes burger {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-90deg);
+
+    }
+  }
+}
+
+.menu-open .header__menu {
+  &::after {
+    width: 100%;
+    transition: width ease-in-out 0.3s;
+    // animation: burger 0.3s alternate ease-in-out forwards;
   }
 }

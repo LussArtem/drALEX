@@ -406,7 +406,7 @@ export function tabs() {
 		}
 	}
 }
-// Модуль работы с меню (бургер) =======================================================================================================================================================================================================================
+// Модуль работы с меню (бургер) ==================='.icon-menu'====================================================================================================================================================================================================
 /*
 Документация по работе в шаблоне: https://template.fls.guru/template-docs/menu-burger.html
 Сниппет (HTML): menu
@@ -414,12 +414,14 @@ export function tabs() {
 export function menuInit() {
 	if (document.querySelector(".icon-menu")) {
 		document.addEventListener("click", function (e) {
-			if (bodyLockStatus && e.target.closest('.icon-menu')) {
+			if (bodyLockStatus && e.target.closest('.header__menu')) {
 				bodyLockToggle();
 				document.documentElement.classList.toggle("menu-open");
 			}
+			document.querySelector(".header__menu").classList.toggle("hahaha") 
 		});
 	};
+	
 }
 export function menuOpen() {
 	bodyLock();
