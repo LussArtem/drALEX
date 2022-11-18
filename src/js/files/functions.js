@@ -417,8 +417,8 @@ export function menuInit() {
 			if (bodyLockStatus && e.target.closest('.header__menu')) {
 				bodyLockToggle();
 				document.documentElement.classList.toggle("menu-open");
+				document.querySelector(".header__menu").classList.toggle("hahaha") 
 			}
-			document.querySelector(".header__menu").classList.toggle("hahaha") 
 		});
 	};
 	
