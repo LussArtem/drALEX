@@ -1,1 +1,48 @@
 // Заголовки, общие БЄМ блоки и проче...
+
+
+h1 {
+    font-size: 15rem;
+}
+
+svg {
+    fill: $mainColor;
+    width: 100%;
+    height: 100%;
+}
+
+img {
+	width: 100%;
+}
+
+// section:not(first-child) {
+//     margin-top: 5rem;
+// }
+
+.btn {
+	padding: 1rem;
+	background-color: #000000;
+}
+
+.btn__card {
+	margin-top: -8%;
+	// margin-left: -8%;
+}
+
+// scrollBar style
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #b9b9b9;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: #000000;
+}

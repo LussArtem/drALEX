@@ -1,0 +1,31 @@
+.event {
+   height: 100vh;
+
+  &__card {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    background-color: bisque;
+    // height: 200vh;
+  }
+
+  &__text {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 40%;
+    background-color: blueviolet;
+    height: fit-content;
+    padding: 2rem;
+    top: 35px;
+    transform: translateX(30%);
+  }
+
+  &__item {
+    width: 55%;
+    object-fit: cover;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start ;
+  }
+}

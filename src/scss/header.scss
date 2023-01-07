@@ -21,11 +21,6 @@
   &__logo {
     width: 6rem;
     height: 6rem;
-    &:hover {
-      // animation need
-      // animation: burger 1s ease-in-out alternate;
-      // animation-fill-mode: both;
-    }
   }
 
   &__burger {
@@ -45,37 +40,21 @@
       inset: 0;
       position: absolute;
       transform-origin: right;
-      // animation: burger 3s alternate ease-in-out forwards;
     }
 
     &:hover {
       .icon-menu {
-        span,
-        &::after,
-        &::before {
+        .menu__item--1,
+        .menu__item--2,
+        .menu__item--3{
           animation-play-state: running;
         }
-        span {
-          animation-play-state: running;
-        }
-        &::before {
-          animation-play-state: running;
-        }
+  
       }
     }
   }
 }
 
-@keyframes burger {
-  0% {
-    transform: rotate(1deg);
-  }
-  100% {
-    transform: rotate(90deg);
-    top: calc(50% - rem(2.75));
-
-  }
-}
 //====================================================================================================
 
 //Burger
@@ -87,33 +66,37 @@
   width: rem(26);
   height: rem(26);
   z-index: 5;
-  // transform: rotate(180deg);
-  span,
-  &::before,
-  &::after {
+  %item {
     content: "";
     transition: all 0.3s ease 0s;
     left: 0;
     position: absolute;
-    height: rem(5.4);
+    height: rem(5.5);
+    border-radius: 1px;
     background-color: rgba(255, 255, 255, 0.877);
   }
 
-  &::before {
+  .menu__item--1,
+  .menu__item--2,
+  .menu__item--3 {
+    @extend %item;
+  }
+
+  .menu__item--1 {
     width: 100%;
     top: 0;
     animation: burger-hover 1s infinite ease-in-out alternate 400ms paused;
   }
 
-  &::after {
+  .menu__item--2 {
     width: 50%;
-    bottom: 0;
+    top: calc(50% - rem(2.75));
     animation: burger-hover 1s infinite ease-in-out alternate 1ms paused;
   }
 
-  span {
+  .menu__item--3 {
     width: 75%;
-    top: calc(50% - rem(2.75));
+    bottom: 0;
     animation: burger-hover 1s infinite ease-in-out alternate 200ms paused;
   }
 
@@ -130,35 +113,21 @@
   }
 
   .menu-open & {
-    // transform: rotate(90deg);
-    animation: burger 0.3s ease-in-out alternate;
-    animation-fill-mode: both;
-
-    span {
-      width: 100%;
-      top: calc(50% - rem(2.75));
-      //   animation: burger-hover none;
-    }
-    span,
-    &::before,
-    &::after {
-      background-color: rgb(192, 51, 51);
+    .menu__item--1,
+    .menu__item--2,
+    .menu__item--3 {
+      // background-color: rgb(192, 51, 51);
       animation-play-state: running;
     }
-    &::before {
+    .menu__item--2{
+      width: 100%;
+      top: calc(50% - rem(2.75));
+    }
+    .menu__item--1 {
       top: 0;
     }
-    &::after {
+    .menu__item--3 {
       bottom: 0;
-    }
-  }
-  @keyframes burger {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(-90deg);
-
     }
   }
 }
@@ -166,7 +135,6 @@
 .menu-open .header__menu {
   &::after {
     width: 100%;
-    transition: width ease-in-out 0.3s;
-    // animation: burger 0.3s alternate ease-in-out forwards;
+    transition: width ease-in-out 0.55s;
   }
 }

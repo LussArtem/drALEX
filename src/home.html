@@ -4,10 +4,14 @@
 	"title":"Главная"
 	})
 	<body>
+		<div class="trailer"></div>
 		<div class="wrapper">
 			@@include('html/_header.htm',{})
 			<main class="page">
-				@@include('html/_section1.htm',{})
+				@@include('html/_hero.htm',{})
+				@@include('html/_event.htm',{})
+				@@include('html/_overlay.htm',{})
+				@@include('html/_sets.htm',{})
 			</main>
 			@@include('html/_footer.htm',{})
 		</div>
