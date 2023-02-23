@@ -22,8 +22,15 @@ $fontFamily: "Inter";
 $fontSize: rem(36); // где 14(px) - размер шрифта по умолчанию из макета
 
 // Основные цвета
-$mainColor: rgb(255, 255, 255); // Цвет шрифта по умолчанию
-$mainColorBG: #000; // color background
+$mainColor: #ffff; // Цвет шрифта по умолчанию
+$mainColorBG: #020202; // color background
+
+//color of year
+$colorYear: #be3455;
+$colorYearLite1: #EE879F;
+$colorYearLite2: #D75775;
+$colorYearDark1: #9F1A39;
+$colorYearDark2: #7C0420;
 
 // Настройки адаптивной сетки ===============================================================================================================================================================================================================================================================================================
 
@@ -64,6 +71,7 @@ body {
 	.lock & {
 		overflow: hidden;
 		touch-action: none;
+		background-color: #020202;
 	}
 	// Сайт загружен
 	.loaded & {
@@ -146,7 +154,7 @@ body {
 // Подключение стилей отдельных страниц
 @import "home";
 
-// test
+// section
 @import "hero";
 @import "event";
 @import "overlay";

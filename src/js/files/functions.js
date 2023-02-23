@@ -426,6 +426,7 @@ export function menuInit() {
 export function menuOpen() {
 	bodyLock();
 	document.documentElement.classList.add("menu-open");
+	scrollDown();
 }
 export function menuClose() {
 	bodyUnlock();
