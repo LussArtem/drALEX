@@ -16,12 +16,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 4rem 0;
-    // mix-blend-mode: difference;
   }
 
   &__logo {
     width: 6rem;
     height: 6rem;
+    z-index: 7;
   }
 
   &__burger {
@@ -33,10 +33,11 @@
     display: flex;
     position: relative;
     align-items: center;
+    z-index: 7;
 
     &::after {
       content: "";
-      background-color: rgb(0, 0, 0);
+      background-color: $mainColorBG;
       width: 0;
       inset: 0;
       position: absolute;
@@ -112,11 +113,8 @@
       width: 100%;
     }
   }
-  .menu-open {
-    // background-color: black;
-  }
+  
   .menu-open & {
-    // background-color: black;
     .menu__item--1,
     .menu__item--2,
     .menu__item--3 {
@@ -136,9 +134,9 @@
   }
 }
 
-.menu-open .header__menu {
-  &::after {
-    width: 100%;
-    transition: width ease-in-out 0.55s;
-  }
-}
+// .menu-open .header__menu {
+//   &::after {
+//     width: 100%;
+//     transition: width ease-in-out .55s; //.55s
+//   }
+// }
