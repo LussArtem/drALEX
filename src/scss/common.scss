@@ -15,13 +15,14 @@ img {
 	width: 100%;
 }
 
+
 // section:not(first-child) {
 //     margin-top: 5rem;
 // }
 
 .btn {
 	padding: 1rem;
-	background-color: #000000;
+	background-color: $mainColorBG;
 }
 
 .btn__card {
@@ -45,4 +46,10 @@ img {
 ::-webkit-scrollbar-thumb
 {
 	background-color: #000000;
+}
+
+//modificator
+
+._color-year {
+	color: $colorYear;
 }

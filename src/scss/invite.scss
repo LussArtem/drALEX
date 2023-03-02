@@ -1,0 +1,22 @@
+.scrolling-text {
+    overflow: hidden;
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    // background-color: $mainColorBG;
+    .rail {
+      display: flex;
+      h3 {
+        white-space: nowrap;
+        font-size: 200px;
+        font-weight: 900;
+        letter-spacing: 2px;
+        line-height: 1em;
+        margin: 0 2rem 0 0;
+        // color: white;
+      }
+    }
+  }
+  

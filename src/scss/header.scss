@@ -131,11 +131,28 @@
     .menu__item--3 {
       bottom: 0;
     }
+
+    &:hover {
+      .menu__item--1,
+      .menu__item--2,
+      .menu__item--3 {
+        animation-play-state: paused;
+        width: 100%;
+      }
+
+      // .menu__item--2 {
+      //   opacity: 0;
+      // }
+
+      // .menu__item--1 {
+      //   transform: rotate(45deg);
+      // }
+    }
   }
 }
 
 // .menu-open .header__menu {
-//   &::after {
+//   ::after {
 //     width: 100%;
 //     transition: width ease-in-out .55s; //.55s
 //   }
