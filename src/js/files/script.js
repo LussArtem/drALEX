@@ -147,7 +147,7 @@ function zipAnimationUp() {
 function zipDown() {
   gsap.to("#svg", {
     top: "-1000%",
-    duration: 3,
+    duration: 2,
 
     onComplete: function () {
       gsap.set(this.targets(), { clearProps: "all" });
@@ -326,4 +326,21 @@ Observer.create({
       .to(tl, { timeScale: factor * 2.5, duration: 0.15 })
       .to(tl, { timeScale: factor * 1, duration: 1 }, "+=0.3");
   },
+});
+// ////////////////// sets change background
+gsap.to(".sets", {
+  "--target": "0%",
+  ease: Power4.in,
+  scrollTrigger: {
+    trigger: ".sets",
+    markers: {
+      startColor: "yellow",
+      endColor: "#42a6e0",
+      fontSize: "14px"
+    },
+    start: "top center",
+    end: "bottom center",
+    // pin: true,
+    scrub: 1
+  }
 });
