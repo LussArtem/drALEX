@@ -127,8 +127,8 @@ function scrollUp() {
 }
 
 //
+let svgStartPositionDown = document.getElementById("svg");
 function zipAnimationDown() {
-  let svgStartPositionDown = document.getElementById("svg");
   svgStartPositionDown.style.bottom = "";
   svgStartPositionDown.style.top = "";
   svgStartPositionDown.style.position = "fixed";
@@ -136,7 +136,6 @@ function zipAnimationDown() {
   svgStartPositionDown.style.display = "block";
 }
 function zipAnimationUp() {
-  let svgStartPositionDown = document.getElementById("svg");
   svgStartPositionDown.style.bottom = "";
   svgStartPositionDown.style.top = "";
   svgStartPositionDown.style.position = "fixed";
@@ -226,26 +225,19 @@ function horizontalLoop(items, config) {
     xPercent: (i, el) => {
       let w = (widths[i] = parseFloat(gsap.getProperty(el, "width", "px")));
       xPercents[i] = snap(
-        (parseFloat(gsap.getProperty(el, "x", "px")) / w) * 100 +
-          gsap.getProperty(el, "xPercent")
+        (parseFloat(gsap.getProperty(el, "x", "px")) / w) * 100 + gsap.getProperty(el, "xPercent")
       );
       return xPercents[i];
     },
   });
   gsap.set(items, { x: 0 });
   totalWidth =
-    items[length - 1].offsetLeft +
-    (xPercents[length - 1] / 100) * widths[length - 1] -
-    startX +
-    items[length - 1].offsetWidth *
-      gsap.getProperty(items[length - 1], "scaleX") +
-    (parseFloat(config.paddingRight) || 0);
+    items[length - 1].offsetLeft + (xPercents[length - 1] / 100) * widths[length - 1] - startX + items[length - 1].offsetWidth * gsap.getProperty(items[length - 1], "scaleX") + (parseFloat(config.paddingRight) || 0);
   for (i = 0; i < length; i++) {
     item = items[i];
     curX = (xPercents[i] / 100) * widths[i];
     distanceToStart = item.offsetLeft + curX - startX;
-    distanceToLoop =
-      distanceToStart + widths[i] * gsap.getProperty(item, "scaleX");
+    distanceToLoop = distanceToStart + widths[i] * gsap.getProperty(item, "scaleX");
     tl.to(
       item,
       {
@@ -263,8 +255,7 @@ function horizontalLoop(items, config) {
         },
         {
           xPercent: xPercents[i],
-          duration:
-            (curX - distanceToLoop + totalWidth - curX) / pixelsPerSecond,
+          duration: (curX - distanceToLoop + totalWidth - curX) / pixelsPerSecond,
           immediateRender: false,
         },
         distanceToLoop / pixelsPerSecond
@@ -274,8 +265,7 @@ function horizontalLoop(items, config) {
   }
   function toIndex(index, vars) {
     vars = vars || {};
-    Math.abs(index - curIndex) > length / 2 &&
-      (index += index > curIndex ? -length : length); // always go in the shortest direction
+    Math.abs(index - curIndex) > length / 2 && (index += index > curIndex ? -length : length); // always go in the shortest direction
     let newIndex = gsap.utils.wrap(0, length, index),
       time = times[newIndex];
     if (time > tl.time() !== index > curIndex) {
@@ -313,9 +303,9 @@ const tl = horizontalLoop(scrollingText, {
 
 Observer.create({
   onChangeY(self) {
-    let factor = 1;
+    let factor = 2.5;
     if (self.deltaY < 0) {
-      factor = -1;
+      factor *= -1;
     }
     gsap
       .timeline({
@@ -327,17 +317,20 @@ Observer.create({
       .to(tl, { timeScale: factor * 1, duration: 1 }, "+=0.3");
   },
 });
+
+
+
 // ////////////////// sets change background
 gsap.to(".sets", {
   "--target": "0%",
   ease: Power4.in,
   scrollTrigger: {
     trigger: ".sets",
-    markers: {
-      startColor: "yellow",
-      endColor: "#42a6e0",
-      fontSize: "14px"
-    },
+    // markers: false {
+    //   startColor: "yellow",
+    //   endColor: "#42a6e0",
+    //   fontSize: "14px"
+    // },
     start: "top center",
     end: "bottom center",
     // pin: true,
