@@ -53,21 +53,21 @@ tlb.to(menuitem1, speed, { y: 10, easy: Power4.in }, "label--1")
   )
   .to(menuitem3, speed, { y: 0, easy: Power4.in }, "label--2");
 
-// mouse enter/leave
-
 const me1 = document.querySelector(".header__menu");
+const aspectRation = screen.width / screen.height;
+// const  
 
-me1.addEventListener("click", () => {
-  if (!me1.classList.contains("hahaha")) {
-    tlb.play();
-    zipUp();
-    zipAnimationDown();
-  } else {
-    tlb.reverse();
-    zipDown();
-    zipAnimationUp();
-  }
-});
+// me1.addEventListener("click", () => {
+//   if (!me1.classList.contains("hahaha")) {
+//     tlb.play();
+//     zipUp();
+//     zipAnimationDown();
+//   } else {
+//     tlb.reverse();
+//     zipDown();
+//     zipAnimationUp();
+//   }
+// });
 
 // /////////////////////////
 ScrollTrigger.create({
@@ -128,73 +128,75 @@ function scrollUp() {
 
 //
 let svgStartPositionDown = document.getElementById("svg");
-function zipAnimationDown() {
-  svgStartPositionDown.style.bottom = "";
-  svgStartPositionDown.style.top = "";
-  svgStartPositionDown.style.position = "fixed";
-  svgStartPositionDown.style.top = "-1000%";
-  svgStartPositionDown.style.display = "block";
-}
-function zipAnimationUp() {
-  svgStartPositionDown.style.bottom = "";
-  svgStartPositionDown.style.top = "";
-  svgStartPositionDown.style.position = "fixed";
-  svgStartPositionDown.style.top = "-200%"; //-200% mDesctop
-  svgStartPositionDown.style.display = "block";
-}
+// function zipAnimationDown() {
+//   // svgStartPositionDown.style.bottom = "";
+//   // svgStartPositionDown.style.top = "";
+//   svgStartPositionDown.style.position = "fixed";
+//   svgStartPositionDown.style.top = "-1000%";//-700
+//   svgStartPositionDown.style.display = "block";
+// }
+// function zipAnimationUp() {
+//   // svgStartPositionDown.style.bottom = "";
+//   // svgStartPositionDown.style.top = "";
+//   svgStartPositionDown.style.position = "fixed";
+//   svgStartPositionDown.style.top = "-200%"; //-200% mDesctop
+//   svgStartPositionDown.style.display = "block";
+//   svgStartPositionDown.style.fill = "red";
+// }
 
-function zipDown() {
-  gsap.to("#svg", {
-    top: "-1000%",
-    duration: 2,
+// function zipDown() {
+//   gsap.to("#svg", {
+//     top: "-1000%",
+//     duration: 2,
+//     fill: "green",
 
-    onComplete: function () {
-      gsap.set(this.targets(), { clearProps: "all" });
-    },
-  }),
-    gsap.fromTo(
-      ".text-path",
-      {
-        attr: {
-          startOffset: "-50%",
-        },
-      },
-      {
-        attr: {
-          startOffset: "50%",
-        },
-        duration: 3,
+//     onComplete: function () {
+//       gsap.set(this.targets(), { clearProps: "all" });
+//     },
+//   }),
+//     gsap.fromTo(
+//       ".text-path",
+//       {
+//         attr: {
+//           startOffset: "-50%",
+//         },
+//       },
+//       {
+//         attr: {
+//           startOffset: "50%",
+//         },
+//         duration: 3,
 
-        onComplete: function () {
-          gsap.set(this.targets(), { clearProps: "all" });
-        },
-      }
-    );
-}
+//         onComplete: function () {
+//           gsap.set(this.targets(), { clearProps: "all" });
+//         },
+//       }
+//     );
+// }
 
-function zipUp() {
-  gsap.to("#svg", {
-    top: "-150%",
-    duration: 3,
-    onComplete: function () {
-      gsap.set(this.targets(), { clearProps: "all" });
-    },
-  }),
-    gsap.fromTo(
-      ".text-path",
-      {
-        attr: {
-          startOffset: "50%",
-        },
-      },
-      {
-        attr: {
-          startOffset: "-50%",
-        },
-        duration: 10,
-      }
-    );
-}
+// function zipUp() {
+//   gsap.to("#svg", {
+//     top: "-150%",// -70
+//     duration: 3,
+//     onComplete: function () {
+//       gsap.set(this.targets(), { clearProps: "all" });
+//     },
+//   }),
+//     gsap.fromTo(
+//       ".text-path",
+//       {
+//         attr: {
+//           startOffset: "50%",
+//         },
+//       },
+//       {
+//         attr: {
+//           startOffset: "-50%",
+//         },
+//         duration: 10,
+//       }
+//     );
+// }
 
 // /////////////////////////////////////////////// invite marquee
 function horizontalLoop(items, config) {
@@ -335,5 +337,48 @@ gsap.to(".sets", {
     end: "bottom center",
     // pin: true,
     scrub: 1
+  }
+});
+
+// testing
+
+function zipAnimation(valueZipFrom, valueZipTo, valuePathFrom, valuePathTo, durationSvg, durationText) {
+  gsap.fromTo("#svg", {
+    y: valueZipFrom,//-30%
+    fill: "green",
+    display: "block",
+    ease: Power4.in,
+  },
+  {
+    y: valueZipTo,//30%
+    position: "fixed",
+    display: "none",
+    duration: durationSvg,
+    onComplete: function () {
+      gsap.set(this.targets(), { clearProps: "all" });
+    },
+  }),
+    gsap.fromTo(".text-path",
+      {
+        attr: {
+          startOffset: valuePathFrom,//50%
+        },
+      },
+      {
+        attr: {
+          startOffset: valuePathTo,//-50%
+        },
+        duration: durationText,
+      }
+    );
+}
+
+me1.addEventListener("click", () => {
+  if (!me1.classList.contains("hahaha")) {
+    tlb.play();
+    zipAnimation('-40%', '30%', '50%', '-50%', 3, 9);
+  } else {
+    tlb.reverse();
+    zipAnimation('30%', '-60%', '-50%', '50%', 2, 4);
   }
 });
